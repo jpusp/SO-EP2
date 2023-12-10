@@ -14,9 +14,9 @@ public class Writer implements Runnable{
     @Override
     public void run() {
         try {
-            ReaderWriterControl.waitForReaders();
             for (int i = 0; i < 100; i++) {
                 int randomPosition = random.nextInt(words.size());
+                ReaderWriterControl.waitForReaders();
                 words.set(randomPosition, "MODIFICADO");
             }
 
