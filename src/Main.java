@@ -9,7 +9,7 @@ public class Main {
     public static void main(String[] args) {
         int LIST_SIZE = 100;
         BDFileReader reader = new BDFileReader();
-        List<String> words = reader.readFile("/src/files/bd.txt");
+        List<String> words = reader.readFile("/files/bd.txt");
         if (words == null) {
             System.out.println("Erro ao ler o arquivo bd.txt. Verifique o caminho do arquivo");
         } else {
