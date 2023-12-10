@@ -18,7 +18,7 @@ public class ExecutorRunner {
 
             long total = 0;
             for (int j = 0; j < 50; j++) {
-                final ExecutorService executorService;
+                ExecutorService executorService;
                 if (executor.equals(Executor.SINGLE_THREAD)) {
                     executorService = Executors.newSingleThreadExecutor();
                 } else {
@@ -32,8 +32,9 @@ public class ExecutorRunner {
                 }
 
                 executorService.shutdown();
+
                 try {
-                    executorService.awaitTermination(25, TimeUnit.SECONDS);
+                    executorService.awaitTermination(25000, TimeUnit.SECONDS);
                 } catch (InterruptedException e) {
                     Thread.currentThread().interrupt();
                     e.printStackTrace();
@@ -43,8 +44,8 @@ public class ExecutorRunner {
                 total += timeEndMillis - timeStartMillis;
             }
 
-            long averageTime = total / 50;
-            System.out.println("Média de tempo para " + i + " leitores: " + averageTime + " ms");
+            double averageTime = total / 50.0;
+            System.out.println(i + ";" + (100 - i) + ";" + averageTime);
         }
     }
 }
